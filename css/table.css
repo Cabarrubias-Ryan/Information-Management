@@ -1,0 +1,100 @@
+.detail{
+    position: relative;
+    width: 100%;
+    padding: 20px;
+}
+
+.detail .Transaction{
+    position: relative;
+    display: grid;
+    min-height: 100px;
+    background: var(--white);
+    padding: 20px;
+    box-shadow: 0 7px 25px rgba(0,0,0,0.08);
+    border-radius: 20px;
+}
+
+.card{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.card h2{
+    font-weight: 600;
+    color: var(--blue);
+}
+.btn{
+    position: relative;
+    padding: 5px 10px;
+    background: var(--blue);
+    text-decoration: none;
+    color: var(--white);
+    border-radius: 6px;
+}
+
+.add .AddButton {
+    display: inline-block;
+    background-color: #07601c; /* Red color */
+    color: #ffffff; /* White text color */
+    text-decoration: none; /* Remove underline */
+    padding: 8px 14px; /* Padding around text */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth color transition */
+    position: relative;
+    left: 320px; /* Adjust as needed */
+}
+
+/* Hover effect for the delete button */
+.add .AddButton:hover {
+    background-color: #054c16; /* Darker red on hover */
+}
+.detail .icon .bxs-edit {
+    color: rgb(9, 109, 28); /* Change the color to yellow */
+}
+
+/* Style the delete icon */
+.detail .icon .bx-trash {
+    color: #ff3333; /* Change the color to yellow */
+}
+
+.detail table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2px;
+}
+.detail table thead td{
+    font-weight: 600;
+}
+.detail .Transaction table tr{
+    color: var(--black1);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+.detail .Transaction table tr:last-child{
+    border-bottom: none;
+}
+.detail .Transaction table tr:hover{
+    background: var(--blue);
+    color: var(--white);
+}
+.detail .Transaction table tr td{
+    padding: 20px;
+}
+.detail .Transaction table tr td:last-child{
+    text-align: end;
+}
+.detail .Transaction table tr td:nth-child(n+2){
+    text-align: center;
+}
+
+
+@media (max-width: 768px){
+    .detail{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .Transaction{
+        overflow-x: auto;
+    }
+    .status.pending{
+        white-space: nowrap;
+    }
+}
