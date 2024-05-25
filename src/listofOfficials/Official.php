@@ -82,7 +82,7 @@
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
             <!--- This is just for the tables  -->
-            <form method="get">
+            <form method="POST">
                 <div class="search">
                     <label>
                         <input type="text" name="submit" placeholder="Search here"> 
@@ -93,7 +93,7 @@
             <form method="get" class="move-right">
                 <div class="back">
                     <label>
-                        <?php if(isset($_GET['submit'])): ?>
+                        <?php if(isset($_POST['submit'])): ?>
                             <input type="submit" value="&#10006" class="close-button">
                         <?php endif; ?>
                     </label>
@@ -148,8 +148,8 @@
                         include('../../Encryption/Encryption.php');
                         include("../../Connection/Connection.php");
 
-                        if(isset($_GET['submit']) && !empty($_GET['submit'])) {
-                            $search = $_GET['submit'];
+                        if(isset($_POST['submit']) && !empty($_POST['submit'])) {
+                            $search = $_POST['submit'];
                             $sql = "SELECT * FROM fms.Barangay_Official WHERE concat(name,' ',lastname) Like '%$search%' OR  position LIKE '%$search%'";
                         } else {
                             $sql = "SELECT * FROM fms.Barangay_Official";
@@ -159,7 +159,7 @@
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                    if($row['position'] != "System Administrator"){
+                                    if($row['position'] != "System Administrator" && $row['status'] == "Active"){
                                     ?>
                                         <tr>
                                             <td width="60px"><div class="imgBx"><img src="../../img/person.jpg" alt="Profile"></div></td>

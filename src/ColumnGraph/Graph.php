@@ -56,10 +56,10 @@
                 include('../../Connection/Connection.php');
 
                 // Check if the button to display all data is clicked
-                if(isset($_GET['search'])) {
+                if(isset($_POST['search'])) {
                     // Check if a specific month and year are provided in the URL
-                    $searchMonth = isset($_GET['search']) ? date('m', strtotime($_GET['search'])) : null;
-                    $searchYear = isset($_GET['search']) ? date('Y', strtotime($_GET['search'])) : null;
+                    $searchMonth = isset($_POST['search']) ? date('m', strtotime($_POST['search'])) : null;
+                    $searchYear = isset($_POST['search']) ? date('Y', strtotime($_POST['search'])) : null;
 
                     // SQL query to fetch data grouped by month and purpose based on search parameters
                     $sqlData = "SELECT DATE_FORMAT(date, '%Y-%m') AS YearMonth, 
@@ -149,7 +149,7 @@
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
             <!--- This is just for the tables  -->
-            <form action="Analysis.php" method="get">
+            <form method="POST">
                <div class="search">
                     <label>
                         <input type="text" name="search" placeholder="Enter month and/or year (e.g., May 2024)">
@@ -160,7 +160,7 @@
             <form action="Analysis.php" method="get" class="move-right">
                 <div class="back">
                     <label>
-                        <?php if(isset($_GET['search'])): ?>
+                        <?php if(isset($_POST['search'])): ?>
                             <input type="submit" value="&#10006" class="close-button">
                         <?php endif; ?>
                     </label>

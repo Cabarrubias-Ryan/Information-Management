@@ -94,7 +94,7 @@
         <section class="cardBox">
             <div class="card">
                 <div>
-                    <div class="numbers"><?= $_SESSION['Maintenance'] ?></div>
+                    <div class="numbers"><?= number_format($_SESSION['Maintenance'],2, ".",",") ?></div>
                     <div class="cardName">Maintenance Expenses</div>
                 </div>
                 <div class="iconBx">
@@ -103,7 +103,7 @@
             </div>
             <div class="card">
                 <div>
-                    <div class="numbers"><?= $_SESSION['Administration_Expenses'] ?></div>
+                    <div class="numbers"><?= number_format($_SESSION['Administration_Expenses'],2,".", ",") ?></div>
                     <div class="cardName">Administration Expenses</div>
                 </div>
                 <div class="iconBx">
@@ -112,7 +112,7 @@
             </div>
             <div class="card">
                 <div>
-                    <div class="numbers"><?= $_SESSION['Social_Service'] ?></div>
+                    <div class="numbers"><?= number_format($_SESSION['Social_Service'],2,".",",") ?></div>
                     <div class="cardName">Social Service Expenses</div>
                 </div>
                 <div class="iconBx">
@@ -121,7 +121,7 @@
             </div>
             <div class="card">
                 <div>
-                    <div class="numbers"><?= $_SESSION['Total_Expenditures'] ?></div>
+                    <div class="numbers"><?= number_format($_SESSION['Total_Expenditures'],2,".",",") ?></div>
                     <div class="cardName">Total Expenditures</div>
                 </div>
                 <div class="iconBx">

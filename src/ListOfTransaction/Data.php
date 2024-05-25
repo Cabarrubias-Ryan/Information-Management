@@ -54,7 +54,7 @@
                 <ion-icon name="menu-outline"></ion-icon>
             </div>
             <!--- This is just for the tables  -->
-            <form method="get">
+            <form method="POST">
                 <div class="search">
                     <label>
                         <input type="text" name="search" placeholder="Search here">
@@ -65,7 +65,7 @@
             <form method="get" class="move-right">
                 <div class="back">
                     <label>
-                        <?php if(isset($_GET['search'])): ?>
+                        <?php if(isset($_POST['search'])): ?>
                             <input type="submit" value="&#10006" class="close-button">
                         <?php endif; ?>
                     </label>
@@ -83,10 +83,10 @@
                     <h2>Transaction</h2>
                     
                     <?php
-                        if(isset($_GET['search']) && !empty($_GET['search'])) {
+                        if(isset($_POST['search']) && !empty($_POST['search'])) {
                             ?>
                                 <div class="Download">
-                                    <a  href="Download.php?search=<?= isset($_GET['search']) ? $_GET['search'] : " " ?>" target="_blank" class="DownloadButton">Download PDF</a>
+                                    <a  href="Download.php?search=<?= isset($_POST['search']) ? $_POST['search'] : " " ?>" target="_blank" class="DownloadButton">Download PDF</a>
                                 </div>
                             <?php
                         }
@@ -143,8 +143,8 @@
                     <?php
                         
 
-                        if(isset($_GET['search']) && !empty($_GET['search'])) {
-                            $search = $_GET['search'];
+                        if(isset($_POST['search']) && !empty($_POST['search'])) {
+                            $search = $_POST['search'];
                             $sql = "SELECT c.date, c.check_number, dv.disbursement_no, PB.pb_number, c.payee, c.purpose, c.amount FROM fms.Check c LEFT JOIN disbursement_voucher dv ON c.dv = dv.dv_id LEFT JOIN PB_Certification PB ON PB.Id = PB_Certification WHERE c.check_number LIKE '%$search%' OR c.payee LIKE '%$search%' OR c.purpose LIKE '%$search%' OR c.date LIKE '%$search%'";
                         } else {
                             $sql = "SELECT c.date, c.check_number, dv.disbursement_no, PB.pb_number, c.payee, c.purpose, c.amount FROM fms.Check c LEFT JOIN disbursement_voucher dv ON c.dv = dv.dv_id LEFT JOIN PB_Certification PB ON PB.Id = PB_Certification";
@@ -162,7 +162,7 @@
                                     <td><?=$row['pb_number']?></td>
                                     <td style="text-align: left"><?=$row['payee']?></td>
                                     <td style="text-align: left"><?=$row['purpose']?></td>
-                                    <td style="text-align: left"><?=$row['amount']?></td>
+                                    <td style="text-align: left"><?=number_format($row['amount'], 2, '.', ',')?></td>
                                     <?php
                                         if($_SESSION['Data']['role'] == "Administrator"){
                                             ?>

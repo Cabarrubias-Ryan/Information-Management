@@ -54,9 +54,9 @@
                 ['Month', 'Expenses'],
                 <?php
                 include('../../Connection/Connection.php');
-                if(isset($_GET['month'])){
-                    $searchMonth = isset($_GET['month']) ? date('m', strtotime($_GET['month'])) : null;
-                    $searchYear = isset($_GET['month']) ? date('Y', strtotime($_GET['month'])) : null;
+                if(isset($_POST['month'])){
+                    $searchMonth = isset($_POST['month']) ? date('m', strtotime($_POST['month'])) : null;
+                    $searchYear = isset($_POST['month']) ? date('Y', strtotime($_POST['month'])) : null;
                     
                     $sqlData = "SELECT DATE_FORMAT(date, '%Y-%m') AS YearMonth, SUM(amount) AS Total_Expenses FROM fms.Check";
                     if($searchMonth && $searchYear) {
@@ -113,7 +113,7 @@
         <div class="toggle">
             <ion-icon name="menu-outline"></ion-icon>
         </div>
-        <form action="LineAnalysis.php" method="get">
+        <form action="LineAnalysis.php" method="POST">
             <div class="search">
                 <label>
                     <input type="text" name="month" placeholder="Enter month and/or year (e.g., May 2024)">
@@ -121,10 +121,10 @@
                 </label>
             </div>
         </form>
-        <form action="LineAnalysis.php" method="get" class="move-right">
+        <form method="get" class="move-right">
             <div class="back">
                 <label>
-                    <?php if(isset($_GET['month'])): ?>
+                    <?php if(isset($_POST['month'])): ?>
                         <input type="submit" value="&#10006" class="close-button">
                     <?php endif; ?>
                 </label>
