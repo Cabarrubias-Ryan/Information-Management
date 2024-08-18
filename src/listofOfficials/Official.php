@@ -12,7 +12,7 @@
             color: grey;
         }
         .officials table tr:hover h3,
-        .officials table tr:hover a{
+        .officials table tr:hover a {
             color: #fff;
         }
 
@@ -20,43 +20,47 @@
         .officials {
             margin: 15px; /* Adjust the value as needed */
         }
-        .officials table tr td:nth-child(n+2){
+        .officials table tr td:nth-child(n+2) {
             text-align: center;
         }
+
+        /* Reassign button styles */
         .officials .cardHeader .Reassign {
             background-color: #6a0080;
             padding: 8px 16px;
             border-radius: 5px;
             margin-right: 32px; 
         }
-
         .officials .cardHeader .Reassign a {
             text-decoration: none;
             color: white;
         }
-
         .officials .cardHeader .Reassign a:hover {
             text-decoration: underline;
         }
+
+        /* Add button styles */
         .officials .cardHeader .add {
             background-color: #6a0080;
             padding: 8px 16px;
             border-radius: 5px;
             margin-left: 580px;
         }
-
         .officials .cardHeader .add a {
             text-decoration: none;
             color: white;
         }
-
         .officials .cardHeader .add a:hover {
             text-decoration: underline;
         }
+
+        /* Move-right class for positioning */
         .move-right {
             position: relative;
-            right: 240px; /* Move the form to the right by 300px */
+            right: 240px; /* Move the form to the right by 240px */
         }
+
+        /* Close button styles */
         .close-button {
             background-color: white;
             border: 2px solid white;
@@ -68,9 +72,48 @@
             font-size: 12px;
             cursor: pointer;
         }
-
         .close-button:hover {
             background-color: #f0f0f0; /* Change background color on hover */
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .officials {
+                margin: 10px;
+            }
+
+            .officials .cardHeader {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .officials .cardHeader .add,
+            .officials .cardHeader .Reassign {
+                margin: 10px 0;
+                margin-left: 0;
+                margin-right: 0;
+                width: 100%;
+                text-align: center;
+            }
+
+            .officials table tr td:nth-child(n+2) {
+                text-align: center;
+                display: block;
+            }
+
+            .move-right {
+                right: 0;
+            }
+        }
+
+        /* Further adjustments for very small screens */
+        @media screen and (max-width: 480px) {
+            .officials .cardHeader .add,
+            .officials .cardHeader .Reassign {
+                font-size: 14px;
+                padding: 6px 12px;
+            }
         }
     </style>
 </head>
